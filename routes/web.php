@@ -58,3 +58,27 @@ Route::get( '/task', function () {
 	return view( 'tasks', compact( 'tasks' ) );
 
 } );
+
+Route::get( '/tasks', function () {
+
+	// dd( $id );
+	$tasks = DB::table( 'tasks' )->latest()->get();
+	// return view( 'task', compact( 'tasks' ) );
+
+	// $task = DB::table( 'tasks' )->find( $id );
+	// dd( $task );
+	return view( 'tasks.index', compact( 'tasks' ) );
+
+} );
+
+Route::get( '/tasks/{id}', function ( $id ) {
+
+	// dd( $id );
+	// $tasks = DB::table( 'tasks' )->latest()->get();
+	// return view( 'task', compact( 'tasks' ) );
+
+	$task = DB::table( 'tasks' )->find( $id );
+	// dd( $task );
+	return view( 'tasks.show', compact( 'task' ) );
+
+} );
