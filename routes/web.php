@@ -43,13 +43,18 @@ Route::get( '/about', function () {
 
 Route::get( '/task', function () {
 
-	$tasks = [
+	// $tasks = [
 
-     	'Go to the store',
-     	'Finish my screencast',
-     	'Clean the house'
+ //     	'Go to the store',
+ //     	'Finish my screencast',
+ //     	'Clean the house'
 
-    ];
-    return view( 'tasks', compact( 'tasks' ) );
+ //    ];
+ //    return view( 'tasks', compact( 'tasks' ) );
+
+
+	$tasks = DB::table( 'tasks' )->latest()->get();
+	// return $tasks;
+	return view( 'tasks', compact( 'tasks' ) );
 
 } );
