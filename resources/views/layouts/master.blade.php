@@ -68,7 +68,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-    <link href="../public/css/blog.css" rel="stylesheet">
+    <link href="{!!URL::to('css/blog.css')!!}" rel="stylesheet">
   </head>
 
   <body>
@@ -81,7 +81,7 @@
 
       <div class="row">
 
-        @yield( 'content' )
+        @yield( 'content' ) <!-- index.blade.php / create.blade.php -->
 
         @include( 'layouts.sidebar' )
 
