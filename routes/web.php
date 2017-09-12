@@ -11,6 +11,9 @@
 |
 */
 
+use App\Task;
+
+
 Route::get( '/', function () {
         
     // return view( 'welcome', [ 
@@ -41,44 +44,56 @@ Route::get( '/about', function () {
 
 } );
 
-Route::get( '/task', function () {
+// Route::get( '/task', function () {
 
-	// $tasks = [
+// 	// $tasks = [
 
- //     	'Go to the store',
- //     	'Finish my screencast',
- //     	'Clean the house'
+//  //     	'Go to the store',
+//  //     	'Finish my screencast',
+//  //     	'Clean the house'
 
- //    ];
- //    return view( 'tasks', compact( 'tasks' ) );
+//  //    ];
+//  //    return view( 'tasks', compact( 'tasks' ) );
 
 
-	$tasks = DB::table( 'tasks' )->latest()->get();
-	// return $tasks;
-	return view( 'tasks', compact( 'tasks' ) );
+// 	$tasks = DB::table( 'tasks' )->latest()->get();
+// 	// return $tasks;
+// 	return view( 'tasks', compact( 'tasks' ) );
 
-} );
+// } );
 
-Route::get( '/tasks', function () {
+Route::get( '/task', 'TasksController@data' );
 
-	// dd( $id );
-	$tasks = DB::table( 'tasks' )->latest()->get();
-	// return view( 'task', compact( 'tasks' ) );
+// Route::get( '/tasks', function () {
 
-	// $task = DB::table( 'tasks' )->find( $id );
-	// dd( $task );
-	return view( 'tasks.index', compact( 'tasks' ) );
+// 	// dd( $id );
+// 	// $tasks = DB::table( 'tasks' )->latest()->get();
+// 	// return view( 'task', compact( 'tasks' ) );
 
-} );
+// 	// $task = DB::table( 'tasks' )->find( $id );
+// 	// dd( $task );
+// 	$tasks = Task::all();
+// 	return view( 'tasks.index', compact( 'tasks' ) );
 
-Route::get( '/tasks/{id}', function ( $id ) {
+// } );
 
-	// dd( $id );
-	// $tasks = DB::table( 'tasks' )->latest()->get();
-	// return view( 'task', compact( 'tasks' ) );
+Route::get( '/tasks', 'TasksController@index' );
 
-	$task = DB::table( 'tasks' )->find( $id );
-	// dd( $task );
-	return view( 'tasks.show', compact( 'task' ) );
+// Route::get( '/tasks/{id}', function ( $id ) {
 
-} );
+// 	// dd( $id );
+// 	// $tasks = DB::table( 'tasks' )->latest()->get();
+// 	// return view( 'task', compact( 'tasks' ) );
+
+// 	// $task = DB::table( 'tasks' )->find( $id );
+// 	// dd( $task );
+// 	$task = Task::find( $id );
+// 	return view( 'tasks.show', compact( 'task' ) );
+
+// } );
+
+Route::get( '/tasks/{task}', 'TasksController@show' );
+
+Route::get( '/posts', 'PostsController@index' );
+// Route::get( '/posts/{post}', 'PostsController@show' );
+Route::get( '/posts/create', 'PostsController@create' );
